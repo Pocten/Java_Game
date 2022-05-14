@@ -1,9 +1,11 @@
 import View.GameFrame;
+import lombok.Data;
 
 import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+@Data
 public class Main {
     private static final Logger logger = Logger.getGlobal();
 

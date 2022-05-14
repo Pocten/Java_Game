@@ -1,19 +1,22 @@
 package View;
 
-//import Controller.MainController;
+import Controller.MainController;
+
+import lombok.Data;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 //import java.util.logging.Logger;
 
+@Data
 public class GameFrame extends JFrame {
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    //GamePanel gamePanel;
+    GamePanel gamePanel;
 
     public GameFrame() throws IOException, AWTException {
-        //gamePanel = new GamePanel(screen);
-        //this.add(gamePanel);
+        gamePanel = new GamePanel(screen);
+        this.add(gamePanel);
         this.setTitle("Aspon E");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(640, 480);

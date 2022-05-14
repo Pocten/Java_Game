@@ -1,0 +1,6 @@
+Student_x 64
+Student_y 88
+Count_enemy 2
+Heal_item false
+Damage_item false
+Key false

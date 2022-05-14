@@ -1,0 +1,7 @@
+Rows:
+1) Student damage
+2) Student hp
+3) if value == 1 Student have key from start, if value == 0 - no
+4) How many enemyes do you want to create
+5) enemy damage
+6) enemy hp
