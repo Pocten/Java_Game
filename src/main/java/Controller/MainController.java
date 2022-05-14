@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-@Data
+
 public class MainController extends JPanel implements ActionListener {
     Grandmother grandmother;
     ArrayList<Robot> robots;
@@ -115,6 +115,43 @@ public class MainController extends JPanel implements ActionListener {
             timer.stop();
         }
     }
+
+    public boolean getLeft(){ return left; }
+
+    public boolean getRight(){ return right; }
+
+    public boolean getUp(){ return up; }
+
+    public boolean getDown(){ return down; }
+
+    public void setLeft(boolean left) { this.left = left; }
+
+    public void setRight(boolean right) { this.right = right; }
+
+    public void setUp(boolean up) { this.up = up; }
+
+    public void setDown(boolean down) { this.down = down; }
+
+    public int getEnemy_way() { return enemy_way; }
+
+    public void setEnemy_way(int enemy_way) { this.enemy_way = enemy_way; }
+
+    public boolean isWin_game() {
+        return win_game;
+    }
+
+    public void setWin_game(boolean win_game) {
+        this.win_game = win_game;
+    }
+
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public ArrayList<Robot> getRobots() {
+        return robots;
+    }
+
 
     public void save_game() throws IOException {
         FileWriter file = new FileWriter("src/main/java/Levels/save_game.txt");

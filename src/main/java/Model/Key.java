@@ -10,7 +10,7 @@ public class Key extends Thing{
     int x;
     int y;
     Image image;
-    ImageIcon i_key = new ImageIcon("src/main/java/Resources/images/key.png");
+    ImageIcon i_key = new ImageIcon("src/main/java/resources/images/key.png");
 
     public Key(boolean picked_up) {
         super(picked_up);

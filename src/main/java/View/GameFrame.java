@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.IOException;
 //import java.util.logging.Logger;
 
-@Data
+
 public class GameFrame extends JFrame {
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     GamePanel gamePanel;
