@@ -155,8 +155,8 @@ public class MainController extends JPanel implements ActionListener {
 
     public void save_game() throws IOException {
         FileWriter file = new FileWriter("src/main/java/Levels/save_game.txt");
-        file.write("Student_x " + grandmother.getPosition_x()
-                +"\nStudent_y " + grandmother.getPosition_y()
+        file.write("Grandmother_x " + grandmother.getPosition_x()
+                +"\nGrandmother_y " + grandmother.getPosition_y()
                 +"\nCount_enemy " + robots.size()
                 +"\nDrug " + drug.isPicked_up()
                 +"\nWeapon " + weapon.isPicked_up()

@@ -14,8 +14,8 @@ public class Weapon extends Thing{
 
     public Weapon(boolean picked_up) {
         super(picked_up);
-        this.x = 512;
-        this.y = 256;
+        this.x = 650;
+        this.y = 400;
         this.image = i_damage.getImage();
     }
 

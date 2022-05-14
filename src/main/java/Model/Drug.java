@@ -15,7 +15,7 @@ public class Drug extends Thing{
     public Drug(boolean picked_up) {
         super(picked_up);
         this.x = 256;
-        this.y = 256;
+        this.y = 200;
         this.image = i_heal.getImage();
     }
 
