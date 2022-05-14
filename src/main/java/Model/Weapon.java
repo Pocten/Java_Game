@@ -10,7 +10,7 @@ public class Weapon extends Thing{
     int x;
     int y;
     Image image;
-    ImageIcon i_damage = new ImageIcon("src/main/java/Resources/images/damage.png");
+    ImageIcon i_damage = new ImageIcon("src/main/resources/images/damage.png");
 
     public Weapon(boolean picked_up) {
         super(picked_up);

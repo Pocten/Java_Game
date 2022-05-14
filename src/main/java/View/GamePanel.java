@@ -17,12 +17,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@Data
+
 public class GamePanel extends JPanel {
-    BufferedImage image = ImageIO.read(new File("src/main/java/resources/images/background.png "));
-    BufferedImage   win =   ImageIO.read(new File("src/main/java/resources/images/win.jpg"));
-    BufferedImage   lose =  ImageIO.read(new File("src/main/java/resources/images/lose.png"));
-    FileReader level = new FileReader("src/main/java/resources/constructor/level1.txt");
+    BufferedImage image = ImageIO.read(new File("src/main/resources/images/background.png"));
+    BufferedImage win =   ImageIO.read(new File("src/main/resources/images/win.jpg"));
+    BufferedImage lose =  ImageIO.read(new File("src/main/resources/images/lose.png"));
+    FileReader level = new FileReader("src/main/resources/constructor/level1.txt");
 
     MainController controller;
     Grandmother grandmother;

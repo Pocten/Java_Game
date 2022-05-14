@@ -10,7 +10,7 @@ public class Drug extends Thing{
     int x;
     int y;
     Image image;
-    ImageIcon i_heal = new ImageIcon("src/main/java/resources/images/heal.png");
+    ImageIcon i_heal = new ImageIcon("src/main/resources/images/heal.png");
 
     public Drug(boolean picked_up) {
         super(picked_up);

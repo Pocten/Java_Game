@@ -19,10 +19,10 @@ public class GameFrame extends JFrame {
         this.add(gamePanel);
         this.setTitle("Aspon E");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(640, 480);
+        this.setSize(800, 800);
         this.setLocation((screen.width - this.getWidth())/2, (screen.height - this.getHeight())/2); //centering the window
         this.setVisible(true);
-        this.setExtendedState(MAXIMIZED_BOTH);
+        //this.setExtendedState(MAXIMIZED_BOTH);
 
     }
 }

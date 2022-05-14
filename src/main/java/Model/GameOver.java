@@ -13,7 +13,7 @@ public class GameOver{
     private int y;
 
     public GameOver(int x, int y){
-        ImageIcon icon_door = new ImageIcon("src/main/java/resources/images/door.png");
+        ImageIcon icon_door = new ImageIcon("src/main/resources/images/door.png");
         this.door = icon_door.getImage();
         this.x = x;
         this.y = y;

@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 @Data
 public class Grandmother extends Character {
     private Image player;
-    ImageIcon icon_player_down = new ImageIcon("src/main/java/Sources/player_down.png");
-    ImageIcon icon_player_right = new ImageIcon("src/main/java/Sources/player_right.png");
-    ImageIcon icon_player_left = new ImageIcon("src/main/java/Sources/player_left.png");
-    ImageIcon icon_player_up = new ImageIcon("src/main/java/Sources/player_up.png");
+    ImageIcon icon_player_down = new ImageIcon("src/main/resources/images/player_down.png");
+    ImageIcon icon_player_right = new ImageIcon("src/main/resources/images/player_right.png");
+    ImageIcon icon_player_left = new ImageIcon("src/main/resources/images/player_left.png");
+    ImageIcon icon_player_up = new ImageIcon("src/main/resources/images/player_up.png");
     private final Map map;
     private final BufferedImage background;
     private String item_hold;

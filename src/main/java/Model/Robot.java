@@ -12,10 +12,10 @@ import java.util.Random;
 public class Robot extends Character{
 
     private Image robot;
-    ImageIcon icon_enemy_down = new ImageIcon("src/main/java/resources/images/enemy_down.png");
-    ImageIcon icon_enemy_right = new ImageIcon("src/main/java/resources/images/enemy_right.png");
-    ImageIcon icon_enemy_left = new ImageIcon("src/main/java/resources/images/enemy_left.png");
-    ImageIcon icon_enemy_up = new ImageIcon("src/main/java/resources/images/enemy_up.png");
+    ImageIcon icon_enemy_down = new ImageIcon("src/main/resources/images/enemy_down.png");
+    ImageIcon icon_enemy_right = new ImageIcon("src/main/resources/images/enemy_right.png");
+    ImageIcon icon_enemy_left = new ImageIcon("src/main/resources/images/enemy_left.png");
+    ImageIcon icon_enemy_up = new ImageIcon("src/main/resources/images/enemy_up.png");
     private final Map map;
     private final BufferedImage background;
     int counter = 0;
