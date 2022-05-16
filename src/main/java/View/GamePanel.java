@@ -1,11 +1,10 @@
 package View;
 
-import Controller.MainController;
+import Controller.Controller;
 import Controller.Map;
-import Controller.OnKeyPressed;
+import Controller.KeyHandler;
 import Model.*;
 import Model.Robot;
-import lombok.Data;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,7 +23,7 @@ public class GamePanel extends JPanel {
     BufferedImage lose =  ImageIO.read(new File("src/main/resources/images/lose.png"));
     FileReader level = new FileReader("src/main/resources/constructor/level1.txt");
 
-    MainController controller;
+    Controller controller;
     Grandmother grandmother;
     GameOver door;
     Key key;
@@ -63,9 +62,9 @@ public class GamePanel extends JPanel {
         drug = new Drug(false);
         weapon = new Weapon(false);
         door = new GameOver(390, 740);
-        controller = new MainController(this, grandmother, robots, image, map, drug, weapon,key, door,screen);
+        controller = new Controller(this, grandmother, robots, image, map, drug, weapon,key, door,screen);
 //        setBackground(Color.white);
-        addKeyListener(new OnKeyPressed(controller));
+        addKeyListener(new KeyHandler(controller));
         setFocusable(true);
 
     }
@@ -73,7 +72,7 @@ public class GamePanel extends JPanel {
 
 
     public void drawElements() {
-        label.setText("Health: " + grandmother.getHealthPower() + "Damage: " + grandmother.getDamage() + "   Inventory: 1) " + grandmother.getInventory()[0] + " 2) " + grandmother.getInventory()[1] + " Holden item: " + grandmother.getItem_hold());
+        label.setText("Health: " + grandmother.getHealthPower() + "Damage: " + grandmother.getDamage() + "   Inventory: 1) " + grandmother.getInventory()[0] + " 2) " + grandmother.getInventory()[1] + " Holden item: " + grandmother.getItemHold());
         repaint();
 
     }
@@ -85,16 +84,16 @@ public class GamePanel extends JPanel {
             g.drawImage(image, 0, 0, this);
             g.drawImage(door.getDoor(), door.getX(), door.getY(), this);
             g.drawImage(grandmother.getPlayerImage(), grandmother.getPosition_x(), grandmother.getPosition_y(), this);
-            if (controller.getRobots().isEmpty() && !key.isPicked_up()) {
+            if (controller.getRobots().isEmpty() && !key.isPickedUp()) {
                 g.drawImage(key.getImage(), key.getX(), key.getY(), this);
             }
             for (Robot robot : controller.getRobots()) {
                 g.drawImage(robot.getPlayerImage(), robot.getPosition_x(), robot.getPosition_y(), this);
             }
-            if (!drug.isPicked_up()) {
+            if (!drug.isPickedUp()) {
                 g.drawImage(drug.getImage(), drug.getX(), drug.getY(), this);
             }
-            if (!weapon.isPicked_up()) {
+            if (!weapon.isPickedUp()) {
                 g.drawImage(weapon.getImage(), weapon.getX(), weapon.getY(), this);
             }
         }if (!controller.isInGame()){

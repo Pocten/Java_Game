@@ -18,6 +18,5 @@ public class Character {
         this.healthPower = healthPower;
     }
 
-    public Character() {
-    }
+    public Character() {}
 }

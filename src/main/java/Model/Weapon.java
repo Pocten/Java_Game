@@ -10,21 +10,17 @@ public class Weapon extends Thing{
     int x;
     int y;
     Image image;
-    ImageIcon i_damage = new ImageIcon("src/main/resources/images/damage.png");
+    ImageIcon imageWeapon = new ImageIcon("src/main/resources/images/weapon.png");
 
     public Weapon(boolean picked_up) {
         super(picked_up);
         this.x = 650;
         this.y = 400;
-        this.image = i_damage.getImage();
+        this.image = imageWeapon.getImage();
     }
 
-    public void boostDamage(Grandmother grandmother) {
-        grandmother.setDamage(grandmother.getDamage() + 25);
-    }
+    public void boostDamage(Grandmother grandmother) {grandmother.setDamage(grandmother.getDamage() + 25);}
 
-    public boolean picked_up() {
-        return super.isPicked_up();
-    }
+    public boolean pickedUp() {return super.isPickedUp();}
 
 }

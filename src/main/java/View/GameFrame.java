@@ -1,9 +1,5 @@
 package View;
 
-import Controller.MainController;
-
-import lombok.Data;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;

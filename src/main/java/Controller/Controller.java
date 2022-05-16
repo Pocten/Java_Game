@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 
-public class MainController extends JPanel implements ActionListener {
+public class Controller extends JPanel implements ActionListener {
     Grandmother grandmother;
     ArrayList<Robot> robots;
     BufferedImage background;
@@ -38,7 +38,7 @@ public class MainController extends JPanel implements ActionListener {
 
 
 
-    public MainController(GamePanel gp, Grandmother grandmother, ArrayList<Robot> robots, BufferedImage image, Map map, Drug drug, Weapon weapon, Key key, GameOver door, Dimension screen) throws AWTException {
+    public Controller(GamePanel gp, Grandmother grandmother, ArrayList<Robot> robots, BufferedImage image, Map map, Drug drug, Weapon weapon, Key key, GameOver door, Dimension screen) throws AWTException {
         this.background = image;
         this.gamePanel = gp;
         this.grandmother = grandmother;
@@ -53,7 +53,7 @@ public class MainController extends JPanel implements ActionListener {
 
     }
 
-    private static Logger logger = Logger.getLogger(MainController.class.getName());
+    private static Logger logger = Logger.getLogger(Controller.class.getName());
 
     public void initGame() throws AWTException {
         timer = new Timer(50, this);
@@ -63,33 +63,33 @@ public class MainController extends JPanel implements ActionListener {
      taking the middle of hero coord x and compare it with coord x +- half size drug
      than do the same things whith coord y
      **/
-    public void check_item_picked_up() {
-        if (!drug.picked_up()) {
+    public void checkItemPickedUp() {
+        if (!drug.pickedUp()) {
             if (grandmother.getPosition_x()+15 >= drug.getX() && grandmother.getPosition_x()+15 <= drug.getX() + 31) {
                 if (grandmother.getPosition_y()+15 <= drug.getY() + 31 && grandmother.getPosition_y()+15 >= drug.getY()) {
-                    drug.setPicked_up(true);
+                    drug.setPickedUp(true);
                     logger.info("Item for heal was picked up");
                     drug.boostHealthPower(grandmother);
                 }
             }
 
         }
-        if (!weapon.picked_up()) {
+        if (!weapon.pickedUp()) {
             if (grandmother.getPosition_x() + 15 >= weapon.getX() && grandmother.getPosition_x() + 15 <= weapon.getX() + 31) {
                 if (grandmother.getPosition_y() + 15 <= weapon.getY() + 31 && grandmother.getPosition_y() + 15 >= weapon.getY()) {
-                    weapon.setPicked_up(true);
+                    weapon.setPickedUp(true);
                     logger.info("Item for damage was picked up");
                     weapon.boostDamage(grandmother);
                 }
             }
         }
         if (robots.isEmpty()) {
-            if (!key.picked_up()) {
+            if (!key.pickedUp()) {
                 if (grandmother.getPosition_x()+15 >= key.getX() && grandmother.getPosition_x()+15 <= key.getX() + 31) {
                     if (grandmother.getPosition_y()+15 <= key.getY() + 31 && grandmother.getPosition_y()+15 >= key.getY()) {
-                        key.setPicked_up(true);
+                        key.setPickedUp(true);
                         logger.info("Key was picked up");
-                        grandmother.find_key();
+                        grandmother.findKey();
                     }
 
                 }
@@ -104,9 +104,9 @@ public class MainController extends JPanel implements ActionListener {
             move();
             updating_list_enemy();
             for (Robot robot: robots) {
-                move_enemy();
+                moveEnemy();
             }
-            check_item_picked_up();
+            checkItemPickedUp();
         }
         gamePanel.drawElements();
         if (!inGame || win_game){
@@ -115,14 +115,6 @@ public class MainController extends JPanel implements ActionListener {
         }
     }
 
-    public boolean getLeft(){ return left; }
-
-    public boolean getRight(){ return right; }
-
-    public boolean getUp(){ return up; }
-
-    public boolean getDown(){ return down; }
-
     public void setLeft(boolean left) { this.left = left; }
 
     public void setRight(boolean right) { this.right = right; }
@@ -130,10 +122,6 @@ public class MainController extends JPanel implements ActionListener {
     public void setUp(boolean up) { this.up = up; }
 
     public void setDown(boolean down) { this.down = down; }
-
-    public int getEnemy_way() { return enemy_way; }
-
-    public void setEnemy_way(int enemy_way) { this.enemy_way = enemy_way; }
 
     public boolean isWin_game() {
         return win_game;
@@ -153,13 +141,13 @@ public class MainController extends JPanel implements ActionListener {
 
 
     public void save_game() throws IOException {
-        FileWriter file = new FileWriter("src/main/java/Levels/save_game.txt");
+        FileWriter file = new FileWriter("src/main/resources/constructor/save_game.txt");
         file.write("Grandmother_x " + grandmother.getPosition_x()
                 +"\nGrandmother_y " + grandmother.getPosition_y()
                 +"\nCount_enemy " + robots.size()
-                +"\nDrug " + drug.isPicked_up()
-                +"\nWeapon " + weapon.isPicked_up()
-                +"\nKey " + key.isPicked_up());
+                +"\nDrug " + drug.isPickedUp()
+                +"\nWeapon " + weapon.isPickedUp()
+                +"\nKey " + key.isPickedUp());
         file.close();
         logger.info("The game was saved");
     }
@@ -176,53 +164,53 @@ public class MainController extends JPanel implements ActionListener {
         }
     }
 
-    public void player_interaction(){
+    public void playerInteraction(){
         grandmother.use(robots, door, this);
     }
-    public void set_item_hold(int a){
-        grandmother.item_picked(a);
+    public void setItemHold(int a){
+        grandmother.itemPicked(a);
     }
 
     /** takes the direction of movement hero and do the move **/
     public void move() {
         if (left){
-            grandmother.move_left();
+            grandmother.moveLeft();
         }
         if (right){
-            grandmother.move_right();
+            grandmother.moveRight();
         }
         if (up){
-            grandmother.move_up();
+            grandmother.moveUp();
         }
         if (down){
-            grandmother.move_down();
+            grandmother.moveDown();
         }
     }
     /** takes the direction of movement enemy and do the move, during this, check if exist the colisions with coordinations of hero and if they are - attack hero **/
-    public  void  move_enemy(){
+    public  void moveEnemy(){
         for (Robot robot: robots) {
-            int i = robot.generate_random_way();
+            int i = robot.generateRandomWay();
             if (i == 0) {
-                robot.move_left();
-                if (robot.try_attack(grandmother, 1)){
+                robot.moveLeft();
+                if (robot.tryAttack(grandmother, 1)){
                     grandmother.setHealthPower(grandmother.getHealthPower() - robot.getDamage());
                 }
             }
             if (i == 1) {
-                robot.move_right();
-                if (robot.try_attack(grandmother, 2)){
+                robot.moveRight();
+                if (robot.tryAttack(grandmother, 2)){
                     grandmother.setHealthPower(grandmother.getHealthPower() - robot.getDamage());
                 }
             }
             if (i == 2) {
-                robot.move_up();
-                if (robot.try_attack(grandmother, 3)){
+                robot.moveUp();
+                if (robot.tryAttack(grandmother, 3)){
                     grandmother.setHealthPower(grandmother.getHealthPower() - robot.getDamage());
                 }
             }
             if (i == 3) {
-                robot.move_down();
-                if (robot.try_attack(grandmother, 4)){
+                robot.moveDown();
+                if (robot.tryAttack(grandmother, 4)){
                     grandmother.setHealthPower(grandmother.getHealthPower() - robot.getDamage());
                 }
             }

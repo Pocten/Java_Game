@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.MainController;
+import Controller.Controller;
 import Controller.Map;
 import lombok.Data;
 
@@ -12,46 +12,48 @@ import java.util.logging.Logger;
 
 @Data
 public class Grandmother extends Character {
+
+    ImageIcon imagePlayerDown = new ImageIcon("src/main/resources/images/player_down.png");
+    ImageIcon imagePlayerRight = new ImageIcon("src/main/resources/images/player_right.png");
+    ImageIcon imagePlayerLeft = new ImageIcon("src/main/resources/images/player_left.png");
+    ImageIcon imagePlayerUp = new ImageIcon("src/main/resources/images/player_up.png");
+
     private Image player;
-    ImageIcon icon_player_down = new ImageIcon("src/main/resources/images/player_down.png");
-    ImageIcon icon_player_right = new ImageIcon("src/main/resources/images/player_right.png");
-    ImageIcon icon_player_left = new ImageIcon("src/main/resources/images/player_left.png");
-    ImageIcon icon_player_up = new ImageIcon("src/main/resources/images/player_up.png");
     private final Map map;
     private final BufferedImage background;
-    private String item_hold;
+    private String itemHold;
     private String[] inventory = {"sword", ""};
-    private int hero_way;
+    private int heroWay;
 
 
-    public Grandmother(int position_x, int position_y, int damage, int hp, Map map, BufferedImage image, int level_data) {
-        super(position_x, position_y, damage, hp);
+    public Grandmother(int position_x, int position_y, int damage, int healthPower, Map map, BufferedImage image, int levelData) {
+        super(position_x, position_y, damage, healthPower);
 
-        this.player = icon_player_down.getImage();
+        this.player = imagePlayerDown.getImage();
         this.map = map;
         this.background = image;
-        this.item_hold = inventory[0];
-        if (level_data == 1) this.inventory[1] = "key";
+        this.itemHold = inventory[0];
+        if (levelData == 1) {this.inventory[1] = "key";}
     }
 
     private static Logger logger = Logger.getLogger(Grandmother.class.getName());
 
     //set drug holding
-    public void item_picked(int a) {
-        item_hold = inventory[a];
+    public void itemPicked(int a) {
+        itemHold = inventory[a];
     }
 
-    public void find_key() {
+    public void findKey() {
         inventory[1] = "key";
     }
 
     /*if player holding sword - try to attack (check for a collision with the enemy) if player holding sword - try to open the door
      * @ArrayList<Employer> robots - array of enemyes
      * */
-    public void use(ArrayList<Robot> robots, GameOver door, MainController mainController) {
-        if (item_hold == "sword") {
+    public void use(ArrayList<Robot> robots, GameOver door, Controller controller) {
+        if (itemHold == "sword") {
             for (Robot robot : robots) {
-                switch (hero_way) {
+                switch (heroWay) {
                     case 1:
                         if (super.getPosition_y() + 15 >= robot.getPosition_y() - 15 && super.getPosition_y() + 15 <= robot.getPosition_y() + 46) {
                             if (robot.getPosition_x() + 31 <= super.getPosition_x() && robot.getPosition_x() + 41 >= super.getPosition_x()) {
@@ -79,9 +81,9 @@ public class Grandmother extends Character {
                 }
             }
         }
-        if (item_hold == "key") {
+        if (itemHold == "key") {
             if (door.try_open(this)) {
-                mainController.setWin_game(true);
+                controller.setWin_game(true);
                 logger.info("Game over, you win");
             }
         }
@@ -92,46 +94,46 @@ public class Grandmother extends Character {
     }
 
     /* check pixels on color and move if color not black*/
-    public void move_left() {
+    public void moveLeft() {
         int x = super.getPosition_x();
         int y = super.getPosition_y();
         if (map.CheckPixelColor(background, x, y, 1)) {
-            this.player = icon_player_left.getImage();
+            this.player = imagePlayerLeft.getImage();
             super.setPosition_x(x - 4);
-            this.hero_way = 1;
+            this.heroWay = 1;
         }
     }
 
     /* check pixels on color and move if color not black*/
-    public void move_right() {
+    public void moveRight() {
         int x = super.getPosition_x();
         int y = super.getPosition_y();
         if (map.CheckPixelColor(background, x, y, 2)) {
-            this.player = icon_player_right.getImage();
+            this.player = imagePlayerRight.getImage();
             super.setPosition_x(x + 4);
-            this.hero_way = 2;
+            this.heroWay = 2;
         }
     }
 
     /* check pixels on color and move if color not black*/
-    public void move_up() {
+    public void moveUp() {
         int x = super.getPosition_x();
         int y = super.getPosition_y();
         if (map.CheckPixelColor(background, x, y, 3)) {
-            this.player = icon_player_up.getImage();
+            this.player = imagePlayerUp.getImage();
             super.setPosition_y(y - 4);
-            this.hero_way = 3;
+            this.heroWay = 3;
         }
     }
 
     /* check pixels on color and move if color not black*/
-    public void move_down() {
+    public void moveDown() {
         int x = super.getPosition_x();
         int y = super.getPosition_y();
         if (map.CheckPixelColor(background, x, y, 4)) {
-            this.player = icon_player_down.getImage();
+            this.player = imagePlayerDown.getImage();
             super.setPosition_y(y + 4);
-            this.hero_way = 4;
+            this.heroWay = 4;
         }
     }
 
