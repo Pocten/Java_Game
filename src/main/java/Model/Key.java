@@ -14,8 +14,8 @@ public class Key extends Thing{
 
     public Key(boolean picked_up) {
         super(picked_up);
-        this.x = 256;
-        this.y = 200;
+        this.x = 80;
+        this.y = 500;
         this.image = i_key.getImage();
     }
 
