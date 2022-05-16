@@ -5,6 +5,7 @@ import Controller.Map;
 import Controller.KeyHandler;
 import Model.*;
 import Model.Robot;
+import lombok.Data;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,11 +17,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+@Data
 public class GamePanel extends JPanel {
     BufferedImage image = ImageIO.read(new File("src/main/resources/images/background.png"));
-    BufferedImage win =   ImageIO.read(new File("src/main/resources/images/win.jpg"));
-    BufferedImage lose =  ImageIO.read(new File("src/main/resources/images/lose.png"));
+    BufferedImage   win =   ImageIO.read(new File("src/main/resources/images/win.jpeg"));
+    BufferedImage   lose =  ImageIO.read(new File("src/main/resources/images/lose.jpeg"));
     FileReader level = new FileReader("src/main/resources/constructor/level1.txt");
 
     Controller controller;

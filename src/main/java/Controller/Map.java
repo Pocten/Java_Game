@@ -5,7 +5,6 @@ import lombok.Data;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-@Data
 public class Map {
 
     public Map () throws AWTException {
@@ -18,6 +17,15 @@ public class Map {
      @param  y - coordination y, where hero want to go
      @param way - the direction the hero wants to go
      **/
+
+    /**
+     * Checks color of the pixel. If its black
+     * @param image
+     * @param x
+     * @param y
+     * @param way
+     * @return
+     */
     public boolean CheckPixelColor (BufferedImage image, int x, int y, int way) {
         int color;
         int start_x = x;
