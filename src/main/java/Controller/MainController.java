@@ -3,7 +3,6 @@ package Controller;
 import Model.*;
 import Model.Robot;
 import View.GamePanel;
-import lombok.Data;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,7 +69,7 @@ public class MainController extends JPanel implements ActionListener {
                 if (grandmother.getPosition_y()+15 <= drug.getY() + 31 && grandmother.getPosition_y()+15 >= drug.getY()) {
                     drug.setPicked_up(true);
                     logger.info("Item for heal was picked up");
-                    drug.boost_hp(grandmother);
+                    drug.boostHealthPower(grandmother);
                 }
             }
 
@@ -80,7 +79,7 @@ public class MainController extends JPanel implements ActionListener {
                 if (grandmother.getPosition_y() + 15 <= weapon.getY() + 31 && grandmother.getPosition_y() + 15 >= weapon.getY()) {
                     weapon.setPicked_up(true);
                     logger.info("Item for damage was picked up");
-                    weapon.boost_damage(grandmother);
+                    weapon.boostDamage(grandmother);
                 }
             }
         }

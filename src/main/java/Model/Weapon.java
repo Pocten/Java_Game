@@ -19,8 +19,8 @@ public class Weapon extends Thing{
         this.image = i_damage.getImage();
     }
 
-    public void boost_damage(Grandmother grandmother) {
-        grandmother.setDamage(grandmother.getDamage() + 10);
+    public void boostDamage(Grandmother grandmother) {
+        grandmother.setDamage(grandmother.getDamage() + 25);
     }
 
     public boolean picked_up() {

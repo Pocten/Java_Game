@@ -19,8 +19,8 @@ public class Drug extends Thing{
         this.image = i_heal.getImage();
     }
 
-    public void boost_hp(Grandmother grandmother){
-        grandmother.setHealthPower(grandmother.getHealthPower() + 20);
+    public void boostHealthPower(Grandmother grandmother){
+        grandmother.setHealthPower(grandmother.getHealthPower() + 50);
     }
 
     public boolean picked_up(){

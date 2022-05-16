@@ -62,7 +62,7 @@ public class GamePanel extends JPanel {
 
         drug = new Drug(false);
         weapon = new Weapon(false);
-        door = new GameOver(64, 160);
+        door = new GameOver(390, 740);
         controller = new MainController(this, grandmother, robots, image, map, drug, weapon,key, door,screen);
 //        setBackground(Color.white);
         addKeyListener(new OnKeyPressed(controller));
